@@ -17,6 +17,7 @@ let
 in stdenv.mkDerivation rec {
   pname = "godot";
   version = "4.2.2-stable";
+  commitHash = version;
   #  commitHash = "3f5c23d474da8702f4a1627e96e29066b0e3e475";
   #  commitHash = "b09f793f564a6c95dc76acc654b390e68441bd01";
   #  src = ./.;
