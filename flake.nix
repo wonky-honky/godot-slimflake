@@ -71,6 +71,7 @@
               #                })
               #
               #              ];
+              ell = prev.dontCheck prev.ell;
             })
 
           ];
