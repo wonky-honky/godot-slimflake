@@ -71,7 +71,7 @@
               #                })
               #
               #              ];
-              ell = prev.dontCheck prev.ell;
+              ell = prev.ell.overrideAttrs { doCheck = false; };
             })
 
           ];
@@ -99,6 +99,7 @@
               fmt_8
               libxml2
               inputs.fbx2gltf.packages.${system}.default
+
               #              (pkgs.llvmPackages_18.libcxx.override { enableShared = false; })
               pkgs.llvmPackages_18.compiler-rt
               cmake
@@ -129,12 +130,13 @@
               pulseaudio
               dbus
               dbus.lib
+              scons
               speechd
               fontconfig
               fontconfig.lib
               vulkan-loader
               libGL
-
+              scons
               alsa-lib
               #            spdlog
               #            abseil-cpp
