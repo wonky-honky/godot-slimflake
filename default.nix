@@ -16,16 +16,23 @@ let
     if builtins.isString v then "${k}=${v}" else "${k}=${builtins.toJSON v}");
 in stdenv.mkDerivation rec {
   pname = "godot";
-  version = "4.2.2-stable";
+  #  version = "4.2.2-stable";
+  version = "enable-collision-handling-with-mouse-captured";
   commitHash = version;
   #  commitHash = "3f5c23d474da8702f4a1627e96e29066b0e3e475";
   #  commitHash = "b09f793f564a6c95dc76acc654b390e68441bd01";
   #  src = ./.;
+  #  src = fetchFromGitHub {
+  #    owner = "godotengine";
+  #    repo = "godot";
+  #    rev = version;
+  #    hash = "sha256-anJgPEeHIW2qIALMfPduBVgbYYyz1PWCmPsZZxS9oHI";
+  #  };
   src = fetchFromGitHub {
-    owner = "godotengine";
+    owner = "pillowtrucker";
     repo = "godot";
     rev = version;
-    hash = "sha256-anJgPEeHIW2qIALMfPduBVgbYYyz1PWCmPsZZxS9oHI";
+    hash = "sha256-Gbb24UXGiCTO1IBnlRc8hY5zpMAZK0u/LZlktfj31Mo=";
   };
 
   nativeBuildInputs = [
