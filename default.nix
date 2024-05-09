@@ -32,7 +32,7 @@ in stdenv.mkDerivation rec {
     owner = "pillowtrucker";
     repo = "godot";
     rev = version;
-    hash = "sha256-Gbb24UXGiCTO1IBnlRc8hY5zpMAZK0u/LZlktfj31Mo=";
+    hash = "sha256-GflYz8jDG4RLR1D11A7xkD1Jlpzqg8+BfG5LxWQ9G6o=";
   };
 
   nativeBuildInputs = [
