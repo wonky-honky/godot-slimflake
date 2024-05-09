@@ -33,6 +33,12 @@
       "x86_64-darwin"
     ] (system:
       let
+
+        myClangStdenv = pkgs.stdenvAdapters.useMoldLinker
+          (pkgs.stdenvAdapters.overrideCC pkgs.llvmPackages_18.stdenv
+            (pkgs.llvmPackages_18.clang.override {
+              bintools = pkgs.llvmPackages_18.bintools;
+            }));
         pkgs = import nixpkgs {
           inherit system;
 
@@ -82,10 +88,10 @@
           config.allowUnfree = true;
         };
       in {
-        devShells.default = pkgs.llvmPackages_18.stdenv.mkDerivation rec {
+        devShells.default = myClangStdenv.mkDerivation rec {
           # Update the name to something that suites your project.
           name = "godot_shell";
-          stdenv = pkgs.llvmPackages_18.stdenv;
+          stdenv = myClangStdenv;
           #          stdenv = pkgs.llvmPackages_18.libcxxStdenv;
           packages = with pkgs;
             with xorg;
@@ -185,7 +191,7 @@
         packages.fbx2gltf = inputs.fbx2gltf.packages.${system}.default;
         packages.godot = pkgs.callPackage ./default.nix {
           #          stdenv = pkgs.llvmPackages_18.stdenv;
-          stdenv = pkgs.llvmPackages_18.stdenv;
+          stdenv = myClangStdenv;
         };
       });
 }
