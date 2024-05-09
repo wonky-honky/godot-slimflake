@@ -110,7 +110,7 @@ in stdenv.mkDerivation rec {
     udev = withUdev; # Use udev for gamepad connection callbacks
     touch = withTouch; # Enable touch events
     use_llvm = true;
-    linker = "lld";
+    linker = "mold";
     #    LINK = "ld.lld";
     use_static_cpp = true;
   };
