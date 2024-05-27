@@ -70,13 +70,13 @@
               #              })
               #                llvmPackages_18 clang_18 lld_18 lldb_18 llvm_18 clang-tools_18;
               redis = prev.redis.overrideAttrs { doCheck = false; };
-              #              pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
-              #                (python-final: python-prev: {
-              #                  conan = python-prev.dontCheck python-prev.conan;
-              #
-              #                })
-              #
-              #              ];
+              pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+                (python-final: python-prev: {
+                  conan = python-prev.dontCheck python-prev.conan;
+
+                })
+
+              ];
               ell = prev.ell.overrideAttrs { doCheck = false; };
             })
 
@@ -191,6 +191,7 @@
         packages.fbx2gltf = inputs.fbx2gltf.packages.${system}.default;
         packages.godot = pkgs.callPackage ./default.nix {
           #          stdenv = pkgs.llvmPackages_18.stdenv;
+          withPrecision = "double";
           stdenv = myClangStdenv;
         };
       });

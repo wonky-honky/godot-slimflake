@@ -18,7 +18,7 @@ in stdenv.mkDerivation rec {
   pname = "godot";
   #  version = "4.2.2-stable";
   version = "enable-collision-handling-with-mouse-captured";
-  commitHash = "0cf6ec24f8d018e917678d2c058cc23d6dfdbcc3";
+  commitHash = "5a0b6364782d9beb120a142568c70cf6f7ca8d30";
   #  commitHash = "3f5c23d474da8702f4a1627e96e29066b0e3e475";
   #  commitHash = "b09f793f564a6c95dc76acc654b390e68441bd01";
   #  src = ./.;
@@ -32,7 +32,7 @@ in stdenv.mkDerivation rec {
     owner = "pillowtrucker";
     repo = "godot";
     rev = commitHash;
-    hash = "sha256-riJA3gj5loA55jOt51EFo7qtSeR+b7e9BXpfmW5KQ1A=";
+    hash = "sha256-E6VLSqNwW3rEm0bB6d4hyG8aw8Ht/lIruBqp0rvOVIk=";
   };
 
   nativeBuildInputs = [
