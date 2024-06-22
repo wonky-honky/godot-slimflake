@@ -65,7 +65,35 @@
 
               #                clang-tools_18 = prev.callPackage
               #                  "${inputs.nixpkgs-llvm18}/pkgs/development/tools/clang-tools" {
-              llvmPackages = prev.llvmPackages_18;
+              inherit (rec {
+                llvmPackages_18 = prev.recurseIntoAttrs (prev.callPackage
+                  "${inputs.nixpkgs}/pkgs/development/compilers/llvm/18" ({
+                    inherit (prev.stdenvAdapters) overrideCC;
+                    officialRelease = {
+                      version = "18.1.8";
+                      sha256 =
+                        "sha256-iiZKMRo/WxJaBXct9GdAcAT3cz9d9pnAcO1mmR6oPNE=";
+                    };
+                    buildLlvmTools = prev.buildPackages.llvmPackages_18.tools;
+                    targetLlvmLibraries =
+                      prev.targetPackages.llvmPackages_18.libraries or llvmPackages_18.libraries;
+                    targetLlvm =
+                      prev.targetPackages.llvmPackages_18.llvm or llvmPackages_18.llvm;
+                  }));
+
+                clang_18 = llvmPackages_18.clang;
+                lld_18 = llvmPackages_18.lld;
+                lldb_18 = llvmPackages_18.lldb;
+                llvm_18 = llvmPackages_18.llvm;
+
+                clang-tools_18 = prev.callPackage
+                  "${inputs.nixpkgs}/pkgs/development/tools/clang-tools" {
+                    llvmPackages = llvmPackages_18;
+                  };
+              })
+                llvmPackages_18 clang_18 lld_18 lldb_18 llvm_18 clang-tools_18;
+
+              llvmPackages = final.llvmPackages_18;
               #                  };
               #              })
               #                llvmPackages_18 clang_18 lld_18 lldb_18 llvm_18 clang-tools_18;
