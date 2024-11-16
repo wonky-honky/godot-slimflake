@@ -31,7 +31,8 @@ in stdenv.mkDerivation rec {
     owner = "pillowtrucker";
     repo = "godot";
     rev = commitHash;
-    hash = "sha256-WomOAiMmsyJZJwlPC+C3J8ORxP246Lq4j64xMeD9CRE=";
+    hash = "sha256-EIrYwUoqmKtVIuB814no+VHodSsIZfgW3xi1rZ+eS5M=";
+
   };
 
   nativeBuildInputs = [
