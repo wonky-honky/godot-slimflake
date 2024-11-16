@@ -175,6 +175,7 @@
           #          stdenv = pkgs.llvmPackages_18.stdenv;
           withPrecision = "double";
           stdenv = myClangStdenv;
+          withDebug = false;
         };
       });
 }
