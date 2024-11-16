@@ -18,9 +18,8 @@ in stdenv.mkDerivation rec {
   pname = "godot";
   #  version = "4.2.2-stable";
   version = "enable-collision-handling-with-mouse-captured";
-  commitHash = "d7d07a4ef2cea1e122751d2a92abcc61fe9542cb";
-  #  commitHash = "3f5c23d474da8702f4a1627e96e29066b0e3e475";
-  #  commitHash = "b09f793f564a6c95dc76acc654b390e68441bd01";
+  commitHash = "7b043832572447c0b91e614df58b73830b442958";
+
   #  src = ./.;
   #  src = fetchFromGitHub {
   #    owner = "godotengine";
